@@ -14,11 +14,13 @@ export const routes: Routes = [
   //   path: 'register',
   //   loadChildren: 'app/pages/register/register.module#RegisterModule'
   // },
+  
   {
     path: 'pages',
     component: Pages,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+        {path: 'messages', loadChildren:'app/pages/messages/messages.module#MessageModule'},
  //     { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
  //     { path: 'editors', loadChildren: 'app/pages/editors/editors.module#EditorsModule' },
    //   { path: 'components', loadChildren: 'app/pages/components/components.module#ComponentsModule' },

@@ -16,6 +16,7 @@ import { CondensedTable } from './components/basicTables/components/condensedTab
 import { ContextualTable } from './components/basicTables/components/contextualTable';
 import { SmartTables } from './components/smartTables/smartTables.component';
 import { SmartTablesService } from './components/smartTables/smartTables.service';
+import { CourseService } from "./services/course.service";
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
   providers: [
     BasicTablesService,
     SmartTablesService,
+    CourseService
   ]
 })
 export class TablesModule {
