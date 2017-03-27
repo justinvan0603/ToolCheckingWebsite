@@ -13,6 +13,7 @@ import 'style-loader!./theme/initial.scss';
  * Top Level Component
  */
 @Component({
+
   selector: 'app',
   template: `
     <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>

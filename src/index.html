@@ -5,7 +5,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ga<%= htmlWebpackPlugin.options.title %></title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
 
   <meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>">
 
@@ -17,6 +17,14 @@
   <!-- base url -->
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
 
+<!--<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v0.3.15/dist/js/alertify.js"></script>-->
+<!--<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>-->
+   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+<link href="bower_components/alertify.js/themes/alertify.core.css" rel="stylesheet" />
+    <link href="bower_components/alertify.js/themes/alertify.bootstrap.css" rel="stylesheet" />
+       <script src="bower_components/alertify.js/lib/alertify.min.js"></script>
 
 </head>
 

@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -17,12 +17,25 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+import { DatepickerModule, ModalModule, ProgressbarModule, PaginationModule, TimepickerModule } from "ng2-bootstrap";
+import { DateFormatPipe } from "./pages/shared/pipes/date-format.pipe";
+import { HighlightDirective } from "./pages/shared/directives/highlight.directive";
+import { MobileHideDirective } from "./pages/shared/directives/mobile-hide.directive";
+import { ScheduleEditComponent } from "./pages/schedules/schedule-edit.component";
+import { ScheduleListComponent } from "./pages/schedules/schedule-list.component";
+import { ConfigService } from "./pages/shared/utils/config.service";
+import { DataService } from "./pages/shared/services/data.service";
+import { ItemsService } from "./pages/shared/utils/items.service";
+import { MappingService } from "./pages/shared/utils/mapping.service";
+import { NotificationService } from "./pages/shared/utils/notification.service";
+import { SlimLoadingBarService, SlimLoadingBarComponent } from "ng2-slim-loading-bar";
 
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
   GlobalState
 ];
+
 
 export type StoreType = {
   state: InternalStateType,
@@ -33,26 +46,49 @@ export type StoreType = {
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
+
+
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App
+    App,
+    //     DateFormatPipe,
+    //     HighlightDirective,
+    //    // HomeComponent,
+    //     MobileHideDirective,
+    //     ScheduleEditComponent,
+    //     ScheduleListComponent,
+    //     SlimLoadingBarComponent,
+    //  //   UserCardComponent,
+    //  //   UserListComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
     RouterModule,
-   // FormsModule,
-   // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgaModule.forRoot(),
     PagesModule,
-    routing
+    routing,
+    DatepickerModule.forRoot(),
+    ModalModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    PaginationModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
-  ]
+    APP_PROVIDERS,
+       ConfigService,
+        DataService,
+        ItemsService,
+        MappingService,
+      //  NotificationService,
+        SlimLoadingBarService
+  ],
 })
+
 
 export class AppModule {
 

@@ -13,7 +13,7 @@ export class BaThemeConfigProvider {
 
   constructor() {
     this.basic = {
-      default: '#ffffff',
+      default: '#40daf1',
       defaultText: '#ffffff',
       border: '#dddddd',
       borderDark: '#aaaaaa',
@@ -21,7 +21,7 @@ export class BaThemeConfigProvider {
 
     // main functional color scheme
     this.colorScheme = {
-      primary: '#00abff',
+      primary: '#FBE9E7',
       info: '#40daf1',
       success: '#8bd22f',
       warning: '#e7ba08',
@@ -53,17 +53,17 @@ export class BaThemeConfigProvider {
         warning: this.colorScheme.warning,
         danger: this.colorScheme.danger,
 
-        primaryLight: colorHelper.tint(this.colorScheme.primary, 30),
-        infoLight: colorHelper.tint(this.colorScheme.info, 30),
-        successLight: colorHelper.tint(this.colorScheme.success, 30),
-        warningLight: colorHelper.tint(this.colorScheme.warning, 30),
-        dangerLight: colorHelper.tint(this.colorScheme.danger, 30),
+        // primaryLight: colorHelper.tint(this.colorScheme.primary, 30),
+        // infoLight: colorHelper.tint(this.colorScheme.info, 30),
+        // successLight: colorHelper.tint(this.colorScheme.success, 30),
+        // warningLight: colorHelper.tint(this.colorScheme.warning, 30),
+        // dangerLight: colorHelper.tint(this.colorScheme.danger, 30),
 
-        primaryDark: colorHelper.shade(this.colorScheme.primary, 15),
-        infoDark: colorHelper.shade(this.colorScheme.info, 15),
-        successDark: colorHelper.shade(this.colorScheme.success, 15),
-        warningDark: colorHelper.shade(this.colorScheme.warning, 15),
-        dangerDark: colorHelper.shade(this.colorScheme.danger, 15),
+        // primaryDark: colorHelper.shade(this.colorScheme.primary, 15),
+        // infoDark: colorHelper.shade(this.colorScheme.info, 15),
+        // successDark: colorHelper.shade(this.colorScheme.success, 15),
+        // warningDark: colorHelper.shade(this.colorScheme.warning, 15),
+        // dangerDark: colorHelper.shade(this.colorScheme.danger, 15),
 
         dashboard: {
           blueStone: this.dashboardColors.blueStone,
@@ -74,8 +74,8 @@ export class BaThemeConfigProvider {
         },
 
         custom: {
-          dashboardPieChart: colorHelper.hexToRgbA(this.basic.defaultText, 0.8),
-          dashboardLineChart: this.basic.defaultText,
+          // dashboardPieChart: colorHelper.hexToRgbA(this.basic.defaultText, 0.8),
+          // dashboardLineChart: this.basic.defaultText,
         }
       }
     };
