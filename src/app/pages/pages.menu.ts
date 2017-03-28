@@ -165,7 +165,28 @@ export const PAGES_MENU = [
       //   ]
       // },
 
-      
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'User',
+            icon: 'ion-grid',
+            selected: false,
+            expanded: false,
+            order: 500,
+          }
+        },
+        children: [
+          {
+            path: 'userlist',
+            data: {
+              menu: {
+                title: 'Danh sách User',
+              }
+            }
+          }
+        ]
+      },
       {
         path: 'tables',
         data: {

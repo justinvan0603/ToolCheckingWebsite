@@ -8,7 +8,7 @@ import 'rxjs/Rx';
  @Injectable()
  export class ListMessageService
  {
-     private apiUrl = 'http://localhost:9823/api/Messages';
+     private apiUrl = 'http://localhost:9823/api/Messages/';
      constructor(private _httpService : Http)
      {
 
