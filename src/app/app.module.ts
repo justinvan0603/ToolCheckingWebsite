@@ -24,7 +24,6 @@ import { MobileHideDirective } from "./pages/shared/directives/mobile-hide.direc
 import { ScheduleEditComponent } from "./pages/schedules/schedule-edit.component";
 import { ScheduleListComponent } from "./pages/schedules/schedule-list.component";
 import { ConfigService } from "./pages/shared/utils/config.service";
-import { DataService } from "./pages/shared/services/data.service";
 import { ItemsService } from "./pages/shared/utils/items.service";
 import { MappingService } from "./pages/shared/utils/mapping.service";
 import { NotificationService } from "./pages/shared/utils/notification.service";
@@ -50,9 +49,25 @@ export type StoreType = {
 
 @NgModule({
   bootstrap: [App],
+   imports: [ // import Angular's modules
+    BrowserModule,
+    HttpModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgaModule.forRoot(),
+    PagesModule,
+    routing,
+    // DatepickerModule.forRoot(),
+    // ModalModule.forRoot(),
+    // ProgressbarModule.forRoot(),
+    // PaginationModule.forRoot(),
+    // TimepickerModule.forRoot()
+  ],
   declarations: [
     App,
-    //     DateFormatPipe,
+
+          // DateFormatPipe
     //     HighlightDirective,
     //    // HomeComponent,
     //     MobileHideDirective,
@@ -62,30 +77,16 @@ export type StoreType = {
     //  //   UserCardComponent,
     //  //   UserListComponent
   ],
-  imports: [ // import Angular's modules
-    BrowserModule,
-    HttpModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgaModule.forRoot(),
-    PagesModule,
-    routing,
-    DatepickerModule.forRoot(),
-    ModalModule.forRoot(),
-    ProgressbarModule.forRoot(),
-    PaginationModule.forRoot(),
-    TimepickerModule.forRoot()
-  ],
+ 
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-       ConfigService,
-        DataService,
-        ItemsService,
-        MappingService,
+    //   ConfigService,
+     //   DataService,
+     //   ItemsService,
+     //   MappingService,
       //  NotificationService,
-        SlimLoadingBarService
+    //    SlimLoadingBarService
   ],
 })
 

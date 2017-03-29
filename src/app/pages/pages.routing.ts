@@ -20,6 +20,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'users', loadChildren: 'app/pages/users/users.module#UserModule' },
+      { path: 'messages', loadChildren: 'app/pages/messages/messages.module#MessageModule' },
    //   { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
     //  { path: 'editors', loadChildren: 'app/pages/editors/editors.module#EditorsModule' },
     //  { path: 'components', loadChildren: 'app/pages/components/components.module#ComponentsModule' },
@@ -27,7 +28,7 @@ export const routes: Routes = [
    //   { path: 'ui', loadChildren: 'app/pages/ui/ui.module#UiModule' },
    //   { path: 'forms', loadChildren: 'app/pages/forms/forms.module#FormsModule' },
       { path: 'tables', loadChildren: 'app/pages/tables/tables.module#TablesModule' },
-      { path: 'schedules', loadChildren: 'app/pages/schedules/schedules.module#SchedulesModule' }
+       { path: 'schedules', loadChildren: 'app/pages/schedules/schedules.module#SchedulesModule' }
   //    { path: 'maps', loadChildren: 'app/pages/maps/maps.module#MapsModule' }
     ]
   }

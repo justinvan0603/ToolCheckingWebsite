@@ -164,12 +164,33 @@ export const PAGES_MENU = [
       //     }
       //   ]
       // },
-
       {
-        path: '',
+        path: 'messages',
         data: {
           menu: {
-            title: 'User',
+            title: 'Thông báo',
+            icon: 'ion-grid',
+            selected: false,
+            expanded: false,
+            order: 500,
+          }
+        },
+        children: [
+          {
+            path: 'messagelist',
+            data: {
+              menu: {
+                title: 'Danh sách thông báo',
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: 'users',
+        data: {
+          menu: {
+            title: 'Người dùng',
             icon: 'ion-grid',
             selected: false,
             expanded: false,
@@ -221,31 +242,31 @@ export const PAGES_MENU = [
         ]
       },
 
-      {
-        path: 'schedules',
-        data: {
-          menu: {
-            title: 'Schedule',
-            icon: 'ion-grid',
-            selected: false,
-            expanded: false,
-            order: 500,
-          }
-        },
+      // {
+      //   path: 'schedules',
+      //   data: {
+      //     menu: {
+      //       title: 'Schedule',
+      //       icon: 'ion-grid',
+      //       selected: false,
+      //       expanded: false,
+      //       order: 500,
+      //     }
+      //   },
 
    
 
-        children: [
-          {
-            path: 'schedules',
-            data: {
-              menu: {
-                title: 'ScheduleList',
-              }
-            }
-          }
-        ]
-      },
+      //   children: [
+      //     {
+      //       path: 'schedules',
+      //       data: {
+      //         menu: {
+      //           title: 'ScheduleList',
+      //         }
+      //       }
+      //     }
+      //   ]
+      // },
       // {
       //   path: 'maps',
       //   data: {
