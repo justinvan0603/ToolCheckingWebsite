@@ -1,7 +1,7 @@
 
 
 export class Feature  {
-	        public Id :number;
+	    public Id :number;
           public FeaType :string;
           public Contents :string;
           public Level :number;

@@ -13,3 +13,12 @@ export class PaginatedResult<T> {
 export interface Predicate<T> {
     (item: T): boolean
 }
+export interface IUser{
+
+}
+export interface ISchedule{
+
+}
+export interface IScheduleDetails{
+
+}

@@ -60,7 +60,7 @@ export class DataService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        return this.http.put(this._baseUrl + user.Id, JSON.stringify(user), {
+        return this.http.put(this._baseUrl +'/'+ user.Id, JSON.stringify(user), {
             headers: headers
         })
             .map((res: Response) => {
@@ -70,13 +70,12 @@ export class DataService {
     }
 
     createUser(user: User): Observable<User> {
-
+        console.log(user);
         let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        return this.http.post(this._baseUrl, JSON.stringify(user), {
-            headers: headers
-        })
+        headers.append('Content-Type', 'application/json,');
+        //headers.append('Accept', 'application/json');
+        //let data = {'users': user,'domain': user.Domain};
+        return this.http.post(this._baseUrl, JSON.stringify(user), {headers: headers})
             .map((res: Response) => {
                 return res.json();
             })

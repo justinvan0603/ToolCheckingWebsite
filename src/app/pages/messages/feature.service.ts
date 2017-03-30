@@ -24,7 +24,8 @@ export class FeatureService {
 
 
     createFeedback(feature: Feature): Observable<Feature> {
-
+        
+        console.log(feature);
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 

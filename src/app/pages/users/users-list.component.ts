@@ -110,7 +110,7 @@ export class UserListComponent {
         this.loadingBarService.start();
         this.dataService.createUser(user)
             .subscribe(() => {
-                this.notificationService.printSuccessMessage('Thêm feedback thành công');
+                this.notificationService.printSuccessMessage('Thêm tài khoản thành công');
                 this.loadingBarService.complete();
                 this.addUser =new User();
             },

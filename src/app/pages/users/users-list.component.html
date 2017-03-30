@@ -95,7 +95,7 @@
             </div>
                     <hr/>          
                     <button [class.hidden]="this.addingUser" [disabled]="!viewUserForm.form.valid" (click)="editUser(selectedUser)" type="button" class="btn btn-warning">Cập nhật</button>
-                    <button [class.hidden]="!this.addingUser" [disabled]="!viewUserForm.form.valid" (click)="addUser(selectedUser)" type="button" class="btn btn-success">Thêm</button>
+                    <button [class.hidden]="!this.addingUser" [disabled]="!viewUserForm.form.valid" (click)="addNewUser(selectedUser)" type="button" class="btn btn-success">Thêm</button>
 
                 </form>
             </div>
