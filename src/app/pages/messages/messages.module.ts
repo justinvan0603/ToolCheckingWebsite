@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { routing } from "./messages.routing";
@@ -14,7 +14,7 @@ import { Ckeditor } from "../editors/components/ckeditor/ckeditor.component";
 import { Editors } from "../editors/editors.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { DatepickerModule, ModalModule, ProgressbarModule, PaginationModule, TimepickerModule } from "ng2-bootstrap";
-import { HttpModule } from "@angular/http";
+import { HttpModule} from "@angular/http";
 import { ItemsService } from "../shared/utils/items.service";
 import { MappingService } from "../shared/utils/mapping.service";
 import { NotificationService } from "../shared/utils/notification.service";
@@ -23,6 +23,13 @@ import { Messages } from "./messages.component";
 import { DataService } from "./message.service";
 import { FeatureService } from "./feature.service"
 import { ShareModule } from "../shared/shares.module";
+import { UtilityService } from "../shared/services/utility.service";
+import { DataShareService } from "../shared/services/dataShare.service";
+
+import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { Headers, RequestOptions, BaseRequestOptions} from '@angular/http';
+
+
 
 @NgModule({
   imports: [
@@ -50,9 +57,15 @@ import { ShareModule } from "../shared/shares.module";
    // MappingService,
    // NotificationService,
    // SlimLoadingBarService,
-    FeatureService
+    FeatureService,
+    UtilityService,
+    DataShareService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
  // exports:[DateFormatPipe]
 })
 export class MessageModule {
+
+  constructor() {
+  }
 }

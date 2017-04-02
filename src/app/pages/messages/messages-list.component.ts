@@ -19,6 +19,11 @@ import { Message } from "./message";
 import { DataService } from "./message.service";
 import {Feature} from "./feature"
 import {FeatureService} from "./feature.service"
+import {UtilityService} from "../shared/services/utility.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { DataShareService } from "../shared/services/dataShare.service";
+import {Paginated} from "./paginated";
+import {Subscription} from "rxjs";
 @Component({
     // moduleId: module.id,
 
@@ -43,7 +48,7 @@ import {FeatureService} from "./feature.service"
         ])
     ]
 })
-export class MessageListComponent {
+export class MessageListComponent extends Paginated{
     @ViewChild('childModal') public childModal: ModalDirective;
     messages: Message[];
     selectedMessage: Message;
@@ -69,43 +74,98 @@ export class MessageListComponent {
     backdrop: string | boolean = true;
     onEdit: boolean = false;
     addingUser: boolean = false;
+     private _photosAPI: string = 'http://localhost:9823/api/Messages/';
+  private _displayingTotal: number;
+  private sub: Subscription
     constructor(
         private dataService: DataService,
         private itemsService: ItemsService,
         private notificationService: NotificationService,
         private configService: ConfigService,
         private loadingBarService: SlimLoadingBarService,
-        private featureService: FeatureService) {this.feature = new Feature();  }
+        private featureService: FeatureService,
+        public utilityService: UtilityService,
+        private dataShareService: DataShareService,
+  private route: ActivatedRoute,
+  private router: Router
+        )
+    {
+      super(0, 0, 0);
+      this.feature = new Feature();
+
+    }
 
     ngOnInit() {
-        this.apiHost = this.configService.getApiHost();
+       // this.apiHost = this.configService.getApiHost();
+      this.sub = this.route.params.subscribe(params => {
+        this.dataShareService.set(this._photosAPI, 12);
+
         this.loadMessages();
         //this.cleanFeature();
         //this.feature = new Feature();
-        
+      });
+
+
+
     }
 
     loadMessages() {
-        this.loadingBarService.start();
+       this.dataShareService.get(this._page)
+            .subscribe(res => {
 
-        this.dataService.getMessages(this.currentPage, this.itemsPerPage)
-            .subscribe((res: PaginatedResult<Message[]>) => {
-                this.messages = res.result;// schedules;
-                this.totalItems = res.pagination.TotalItems;
-                this.loadingBarService.complete();
+                var data: any = res.json();
+
+                this.messages = data.Items;
+                this._displayingTotal = data.TotalCount;
+                this._page = data.Page;
+                this._pagesCount = data.TotalPages;
+                this._totalCount = data.TotalCount;
+            //    this._albumTitle = this._photos[0].AlbumTitle;
             },
             error => {
-                this.loadingBarService.complete();
-                this.notificationService.printErrorMessage('Có lỗi khi tải thông báo. ' + error);
-            });
+
+                if (error.status == 401 || error.status == 302) {
+
+                    this.utilityService.navigateToSignIn();
+
+                }
+              console.error('Error: ' + error)
+
+
+            },
+            () => console.log(this.messages));
+
     }
+      // this.dataService.getMessages(this.currentPage, this.itemsPerPage)
+      //   .subscribe((res: PaginatedResult<Message[]>) => {
+      //       this.messages = res.result;// schedules;
+      //       this.totalItems = res.pagination.TotalItems;
+      //       this.loadingBarService.complete();
+      //     },
+      //     error => {
+      //       if (error.status == 401 || error.status == 302) {
+      //         this.utilityService.navigateToSignIn();
+      //       }
+      //
+      //       console.error('Error: ' + error);
+      //
+      //       this.loadingBarService.complete();
+      //       this.notificationService.printErrorMessage('Có lỗi khi tải thông báo. ' + error);
+      //
+      //     });
+    //}
 
-    pageChanged(event: any): void {
-        this.currentPage = event.page;
-        this.loadMessages();
+    // pageChanged(event: any): void {
+    //     this.currentPage = event.page;
+    //     this.loadMessages();
+    //
+    // };
 
-    };
-
+  //Thêm hàm này
+  search(i): void {
+    super.search(i);
+    this.loadMessages();
+  };
 
     addFeature(feature: Feature) {
         console.log(feature);

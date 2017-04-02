@@ -1,5 +1,5 @@
 import { NgModule, ModuleWithProviders }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
+import {CommonModule, HashLocationStrategy, LocationStrategy}  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgUploaderModule } from 'ngx-uploader';
@@ -54,6 +54,8 @@ import {
   EmailValidator,
   EqualPasswordsValidator
 } from './validators';
+import {MembershipService} from "../pages/login/membership.service";
+import { DataShareService} from "../pages/shared/services/dataShare.service";
 
 const NGA_COMPONENTS = [
   BaAmChart,
@@ -123,6 +125,8 @@ export class NgaModule {
       providers: [
         BaThemeConfigProvider,
         BaThemeConfig,
+        MembershipService,
+        DataShareService,
         ...NGA_VALIDATORS,
         ...NGA_SERVICES
       ],

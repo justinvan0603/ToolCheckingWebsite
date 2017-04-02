@@ -1,34 +1,46 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 
 import 'style-loader!./login.scss';
+import {User} from "./user";
+import {NotificationService} from "../shared/utils/notification.service";
+import {Router} from "@angular/router";
+import {MembershipService} from "./membership.service";
+import {OperationResult} from "./operationResult";
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
 })
-export class Login {
+export class Login implements OnInit {
+  private _user: User;
 
-  public form:FormGroup;
-  public email:AbstractControl;
-  public password:AbstractControl;
-  public submitted:boolean = false;
+  constructor(public membershipService: MembershipService,
+              public notificationService: NotificationService,
+              public router: Router) { }
 
-  constructor(fb:FormBuilder) {
-    this.form = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
-    });
-
-    this.email = this.form.controls['email'];
-    this.password = this.form.controls['password'];
+  ngOnInit() {
+    this._user = new User('', '');
   }
 
-  public onSubmit(values:Object):void {
-    this.submitted = true;
-    if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
-    }
-  }
+  login(): void {
+    var _authenticationResult: OperationResult = new OperationResult(false, '');
+
+    this.membershipService.login(this._user)
+      .subscribe(res => {
+          _authenticationResult.Succeeded = res.Succeeded;
+          _authenticationResult.Message = res.Message;
+        },
+        error => console.error('Error: ' + error),
+        () => {
+          if (_authenticationResult.Succeeded) {
+            this.notificationService.printSuccessMessage('Welcome back ' + this._user.Username + '!');
+            localStorage.setItem('user', JSON.stringify(this._user));
+            this.router.navigate(['pages/tables/basictables']);
+          }
+          else {
+            this.notificationService.printErrorMessage(_authenticationResult.Message);
+          }
+        });
+  };
 }

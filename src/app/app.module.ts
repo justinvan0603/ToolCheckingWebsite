@@ -28,7 +28,8 @@ import { ItemsService } from "./pages/shared/utils/items.service";
 import { MappingService } from "./pages/shared/utils/mapping.service";
 import { NotificationService } from "./pages/shared/utils/notification.service";
 import { SlimLoadingBarService, SlimLoadingBarComponent } from "ng2-slim-loading-bar";
-
+import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { Headers, RequestOptions, BaseRequestOptions} from '@angular/http';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -46,10 +47,9 @@ export type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 
-
 @NgModule({
   bootstrap: [App],
-   imports: [ // import Angular's modules
+  imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
     RouterModule,
@@ -67,7 +67,7 @@ export type StoreType = {
   declarations: [
     App,
 
-          // DateFormatPipe
+    // DateFormatPipe
     //     HighlightDirective,
     //    // HomeComponent,
     //     MobileHideDirective,
@@ -77,15 +77,15 @@ export type StoreType = {
     //  //   UserCardComponent,
     //  //   UserListComponent
   ],
- 
+
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
     //   ConfigService,
-     //   DataService,
-     //   ItemsService,
-     //   MappingService,
-      //  NotificationService,
+    //   DataService,
+    //   ItemsService,
+    //   MappingService,
+    //  NotificationService,
     //    SlimLoadingBarService
   ],
 })
