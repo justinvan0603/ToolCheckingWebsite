@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'domains',
+  selector: 'optionusers',
   template: `<router-outlet></router-outlet>`
 })
-export class Domains {
+export class OptionUsers {
 
   constructor() {
   }

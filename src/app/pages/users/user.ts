@@ -26,8 +26,8 @@ export class User
           this.Fullname ='';
           this.Password = '';
           this.Email ='';
-          this.Phone =0;
-          this.ParentId =0;
+          this.Phone = null;
+          this.ParentId = null;
           this.Description ='';
           this.RecordStatus ='';
           this.AuthStatus ='';

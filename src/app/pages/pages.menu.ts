@@ -186,6 +186,7 @@ export const PAGES_MENU = [
           }
         ]
       },
+      
       {
         path: 'users',
         data: {
@@ -203,6 +204,50 @@ export const PAGES_MENU = [
             data: {
               menu: {
                 title: 'Danh sách User',
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: 'messageconfigurations',
+        data: {
+          menu: {
+            title: 'Cấu hình',
+            icon: 'ion-grid',
+            selected: false,
+            expanded: false,
+            order: 500,
+          }
+        },
+        children: [
+          {
+            path: 'messageconfigurationslist',
+            data: {
+              menu: {
+                title: 'Cấu hình thông báo',
+              }
+            }
+          }
+        ]
+      },
+      {
+        path: 'domains',
+        data: {
+          menu: {
+            title: 'Domain',
+            icon: 'ion-grid',
+            selected: false,
+            expanded: false,
+            order: 500,
+          }
+        },
+        children: [
+          {
+            path: 'domainlist',
+            data: {
+              menu: {
+                title: 'Danh sách Domain',
               }
             }
           }

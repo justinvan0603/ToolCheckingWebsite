@@ -105,10 +105,12 @@ export class UserListComponent {
     };
 
 
-    addNewUser(user: User) {
-        console.log(user);
+    addNewUser(usr: User) {
+        
+        //console.log(user);
+        console.log(this.selectedUser);
         this.loadingBarService.start();
-        this.dataService.createUser(user)
+        this.dataService.createUser(this.selectedUser)
             .subscribe(() => {
                 this.notificationService.printSuccessMessage('Thêm tài khoản thành công');
                 this.loadingBarService.complete();

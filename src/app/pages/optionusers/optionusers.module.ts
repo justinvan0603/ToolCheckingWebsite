@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
-import { routing } from "./domains.routing";
+import { routing } from "./optionusers.routing";
 
-import { DomainListComponent } from "./domain-list.component";
+
 
 import { DateFormatPipe } from "../shared/pipes/date-format.pipe";
 import { HighlightDirective } from "../shared/directives/highlight.directive";
@@ -19,12 +19,21 @@ import { ItemsService } from "../shared/utils/items.service";
 import { MappingService } from "../shared/utils/mapping.service";
 import { NotificationService } from "../shared/utils/notification.service";
 import { ConfigService } from "../shared/utils/config.service";
-import { Domains } from "./domains.component";
-import { DataService } from "./domains.service";
+
+
 import { ShareModule } from "../shared/shares.module";
-import { ManageUserService } from "./manageuser.service";
-// import { OptionLinkModule } from "./option-link/option-link.module";
-//import { OptionLinkComponent } from "./option-link/option-link.component";
+import { OptionUsers } from "./optionusers.component";
+import { OptionUserListComponent } from "./optionusers-list.component";
+import { OptionUserService } from "./optionusers.service";
+import { DomainUserService } from "./domainuser.service";
+import { ManageUserService } from "../domains/manageuser.service";
+
+//import { OptionLinks } from "./optionlinks.component";
+//import { OptionLinkListComponent } from "./optionlinks-list.component";
+///import { OptionLinkService } from "./optionlinks.service";
+//import { OptionService } from "./option.service";
+//mport { OptionUsers } from "./optionusers.component";
+
 
 
 @NgModule({
@@ -41,18 +50,18 @@ import { ManageUserService } from "./manageuser.service";
 
   ],
   declarations: [
-    Domains,
-    DomainListComponent,  
+    OptionUsers,
+    OptionUserListComponent
  
   ],
   providers: [
   
-  DataService,
-  ManageUserService,
- 
+ OptionUserService,
+ DomainUserService,
+ ManageUserService
 
   ],
   //exports:[DateFormatPipe]
 })
-export class DomainModule {
+export class OptionLinkModule {
 }
